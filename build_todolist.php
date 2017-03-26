@@ -12,6 +12,7 @@
     $dom -> loadHTML($archives);
     $todo_lv1 = array();
 
+    // get monthley list of archives page
     foreach($dom -> getElementsByTagName('a') as $todo) {
         $attr = $todo->getAttribute('href');
         $checker = preg_match('/\/archives\/[0-9]{4}$/', $attr);
@@ -19,5 +20,7 @@
             $todo_lv1[] = $attr;
         };
     };
+
+    // get article list from monthley list
 
  ?>
