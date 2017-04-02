@@ -62,7 +62,7 @@
         }
     }
 
-    //
+    // rlk_raw_documents
     // | ref_numb | document  | cit | parsed_date   | archive_date
     // | int      | long text | url | datetime      | date
     //
@@ -70,4 +70,3 @@
     // dataExtractor.php -> extract initial data from document.
     // daileyParser.php -> dailey parser from neolook.com
     //
- ?>
