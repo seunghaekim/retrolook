@@ -6,3 +6,4 @@ class Rawdata(models.Model):
     uri = models.CharField(max_length=50)
     createtime = models.DateTimeField()
     pubtime = models.DateField()
+    origin = models.SlugField(default='neolook')
