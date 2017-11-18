@@ -48,7 +48,7 @@ def crawler():
                 )
             )
         }
-        if Rawdata.objects.filter(url=day).count() < 1:
+        if Rawdata.objects.filter(uri=day).count() < 1:
             rawdata = Rawdata(
                 document=str(crawler.collectContent(day)),
                 uri=day,
