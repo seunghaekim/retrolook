@@ -1,0 +1,10 @@
+{% if message %}
+<h2>{{message}}</h2>
+{% endif %}
+{% if lists %}
+<ul>
+  {% for list in lists %}
+  <li><a href="http://neolook.com{{ list.uri }}">{{ list.uri }}, {{ list.createtime|date:'Y-m-d H:i:s' }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}
