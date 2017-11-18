@@ -1,15 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
+from django.utils import timezone
+from django.shortcuts import render
+from rawdata.models import Rawdata
 from .crawler import Crawler
 import datetime
 import time
 import re
-from rawdata.models import Rawdata
-from django.utils import timezone
 
 
 def index(request):
     return HttpResponse('hello world')
+
+
+def latestCrawled(request):
+    lists = Rawdata.objects.all()
+    context = {
+        'message': 'Total count of Crawled documents is %d' % lists.count(),
+        'lists': lists[:10]
+    }
+
+    return render(request, 'rawdata/list.html', context)
 
 
 def crawler():
