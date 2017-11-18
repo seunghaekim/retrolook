@@ -18,7 +18,7 @@ def latestCrawled(request):
     lists = Rawdata.objects.all()
     context = {
         'message': 'Total count of Crawled documents is %d' % lists.count(),
-        'lists': lists[:10]
+        'lists': lists.order_by('-createtime')[:10]
     }
 
     return render(request, 'rawdata/list.html', context)
