@@ -36,16 +36,17 @@ def crawler():
                 )
             )
         }
-        rawdata = Rawdata(
-            document=str(crawler.collectContent(day)),
-            uri=day,
-            createtime=datetime.datetime.now(),
-            pubtime=time.strftime('%Y-%m-%d', time.strptime(
-                    re.compile(r'[^\d]').sub('', day.split('/')[-1]), '%Y%m%d'
-            )),
-            origin='neolook'
-        )
-        rawdata.save()
-        print('%s %s' % (datetime.datetime.now(), rawdata.uri))
+        if Rawdata.objects.filter(url=day).count() < 1:
+            rawdata = Rawdata(
+                document=str(crawler.collectContent(day)),
+                uri=day,
+                createtime=datetime.datetime.now(),
+                pubtime=time.strftime('%Y-%m-%d', time.strptime(
+                        re.compile(r'[^\d]').sub('', day.split('/')[-1]), '%Y%m%d'
+                )),
+                origin='neolook'
+            )
+            rawdata.save()
+            print('%s %s' % (datetime.datetime.now(), rawdata.uri))
 
     return None
